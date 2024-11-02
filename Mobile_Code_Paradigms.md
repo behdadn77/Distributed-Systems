@@ -48,4 +48,10 @@ Mobile code refers to the ability to relocate components of a distributed applic
 ### Advantages of Mobile Code:
 - **Flexibility:** Code components can be updated at runtime without halting the system.
 - **Enrich Functionality:** Existing components can easily be extended or modified.
-- **Service Adapta
+- **Service Adaptability:** Services can be customized dynamically to meet specific client requirements.
+- **Ease of Adding Services:** New services can be integrated seamlessly.
+
+---
+
+### Challenges:
+- **Security Risks:** Executing mobile code safely is complex. The risk of malicious code exploiting vulnerabilities is a significant concern.
