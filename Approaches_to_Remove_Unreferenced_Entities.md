@@ -16,6 +16,17 @@ Performance can suffer due to multiple message requirements, especially in large
 Weighted Reference Counting:
 
 This approach assigns two equal weights (e.g., 128, 128) to an object. Each time a reference is created, the weight is halved and distributed. When the weights become equal again, the object can be collected.
+
+```
+How Weighted Reference Counting Works:
+Initial Assignment: When an object is created, it is assigned two equal initial weights, for example, 128 and 128.
+Reference Creation: When a new reference to the object is made, one of the weights (let’s call it the remaining weight) is halved and assigned to the new reference. The remaining weight is also updated, usually halved as well, to ensure proper bookkeeping.
+Reference Removal and Weight Recombination:
+When references are deleted, the weight that was associated with that reference is returned to the original weight pool of the object.
+As references are destroyed and weights are returned, the weights that were distributed during reference creation are "merged" back, eventually restoring balance.
+When all references are gone and all weights have been returned, the original two weights become equal again.
+```
+
 Problems:
 Only a limited number of references can be created due to the halving mechanism.
 Scalability issues arise as reference creation depletes the available weight.
