@@ -47,6 +47,8 @@
    - **Reason**: NTP provides a reasonable balance between accuracy and scalability for synchronizing clocks across a large number of nodes. Although it may not offer microsecond precision, it is typically sufficient for sound source localization, provided that small errors are acceptable.
    - **Alternative**: If extremely high precision is required and the microphones are outdoors or in GPS-accessible areas, using **GPS-based synchronization** would be more suitable.
 
+   >I don't trust chatgpt for this one. imo since the nodes need to be synced only amoung themselves Berkely's is sufficent.
+
 ---
 
 ### Conclusion
