@@ -1,67 +1,51 @@
 
 
-**Question:** *Describe and classify the types of failures that may happen in a distributed system.*
+**Question:** *Describe and classify the type of failures that may happen in a distributed system.*
 
 ---
 
 ### Answer
 
-In distributed systems, failures can occur in many forms due to the complexity and the lack of a centralized control. Understanding and classifying these failures is essential for designing robust and fault-tolerant systems. Here is a detailed classification of the types of failures that may occur:
+In distributed systems, both processes and communication channels are susceptible to various types of failures. These failures are classified to better understand and manage their impact on the system's behavior. The failure model breaks down into several categories:
 
 ---
 
-### 1. **Crash Failures**
-   - **Description**: A crash failure occurs when a component in the system stops functioning and fails to respond to any further requests.
+### 1. **Omission Failures**
+   - **Description**: Omission failures occur when an expected action is not performed, either by a process or a communication channel.
    - **Types**:
-     - **Fail-Stop**: The component stops working and remains stopped. Other components can detect that the failure has occurred.
-     - **Fail-Silent**: The component stops working, but other components cannot easily detect the failure.
-   - **Example**: A server in a distributed database system crashes and stops processing queries or transactions.
+     - **Process Omission**: The process fails or crashes, making it unable to execute further tasks.
+     - **Channel Omission**: Failures that occur when messages are lost. These can be further categorized into:
+       - **Send Omission**: A message is lost while traversing the sender’s operating system or network stack.
+       - **Channel Omission**: A message is lost while traversing the physical network.
+       - **Receive Omission**: A message is lost when passing through the receiver’s network stack or operating system.
+   - **Example**: A packet gets dropped due to network congestion, or a server crashes and stops processing requests.
 
 ---
 
-### 2. **Omission Failures**
-   - **Description**: These failures occur when a component fails to send or receive a message.
+### 2. **Byzantine (or Arbitrary) Failures**
+   - **Description**: These are the most complex and unpredictable failures. In a Byzantine failure, processes or communication channels can behave erratically, such as performing unintended actions or delivering incorrect information.
    - **Types**:
-     - **Send Omission**: The component fails to send a message.
-     - **Receive Omission**: The component fails to receive a message.
-   - **Example**: A network router dropping packets due to congestion, leading to missed messages.
+     - **Process Byzantine Failures**: A process may omit necessary steps in its computation or introduce unexpected, erroneous behavior.
+     - **Channel Byzantine Failures**: The message content may be corrupted, non-existent messages may be delivered, or real messages may be duplicated and delivered multiple times.
+   - **Example**: A compromised node in a network sends conflicting information to different parts of the system, or a communication channel delivers corrupted messages that mislead the recipients.
 
 ---
 
 ### 3. **Timing Failures**
-   - **Description**: Timing failures occur when a component's response time deviates from what is expected.
+   - **Description**: Timing failures occur when a system does not meet the predefined time constraints, and they are specific to synchronous systems.
    - **Types**:
-     - **Early Response**: A component responds faster than expected, potentially causing inconsistencies.
-     - **Late Response**: A component responds slower than expected, which can be problematic in real-time systems.
-   - **Example**: A server taking too long to respond to a time-sensitive query, causing the system to miss a critical deadline.
+     - **General Timing Failures**: When a process or message takes longer to complete than the time limit set for the system. This violation can disrupt real-time operations or deadlines.
+   - **Example**: A service expected to respond within 5 milliseconds takes 50 milliseconds, potentially causing downstream systems to malfunction or timeout.
 
 ---
 
-### 4. **Response Failures**
-   - **Description**: These occur when a component's response is incorrect or inconsistent with what is expected.
-   - **Types**:
-     - **Value Failure**: The response value is incorrect, even though the message itself is delivered.
-     - **State Transition Failure**: The component does not transition correctly between states, leading to inconsistent system behavior.
-   - **Example**: A computation node returning incorrect data due to a software bug or corrupted memory.
+### Failure Detection in Synchronous vs. Asynchronous Systems
 
----
-
-### 5. **Byzantine Failures**
-   - **Description**: The most complex type of failure, where a component behaves arbitrarily, potentially maliciously or inconsistently. Byzantine failures can produce conflicting or misleading information that other components must handle.
-   - **Challenges**: Byzantine failures are difficult to detect and handle because the component may appear to be functioning correctly while delivering incorrect or misleading results.
-   - **Example**: A compromised server providing inconsistent data to different clients, making consensus difficult.
-
----
-
-### 6. **Network Failures**
-   - **Description**: Failures related to the network infrastructure, affecting message delivery, routing, or connectivity.
-   - **Types**:
-     - **Partitioning**: The network splits into disjoint segments, isolating parts of the system from each other.
-     - **Packet Loss**: Messages are lost in transit due to congestion or hardware issues.
-     - **Latency**: High delays in message delivery, which can disrupt the timing of distributed algorithms.
-   - **Example**: A network partition causing parts of a distributed database to become isolated and inconsistent.
+- **Synchronous Systems**: Detecting failures is straightforward because the system operates within strict time constraints. If a process or communication does not complete within a set time limit, it is assumed to have failed. For example, in "Pepperland," if one division does not receive a periodic message from another within a specified timeframe, it concludes the other division has been defeated.
+- **Asynchronous Systems**: Detecting failures is more complicated because there are no strict time constraints. A delayed message could mean a failure or simply a delay in message delivery. In "Pepperland," it is difficult to determine whether the other division is defeated or if the messenger is just delayed while crossing the valley.
 
 ---
 
 ### Conclusion
-Distributed systems are prone to a variety of failures, each requiring different strategies for detection, handling, and recovery. Understanding the nature of these failures is crucial for designing systems that can maintain reliability, consistency, and availability under adverse conditions.
+Understanding the types of failures in a distributed system is crucial for designing mechanisms that can tolerate or recover from such issues. **Omission failures** are more common for processes, while **Byzantine failures** frequently occur in communication channels. **Timing failures** are relevant only in synchronous systems and can be difficult to handle in asynchronous environments. Each failure type requires a tailored approach for detection and recovery.
+
