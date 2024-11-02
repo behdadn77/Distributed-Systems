@@ -2,7 +2,7 @@
 **Question:** *You want to implement your own video streaming service. Describe the specific requirements of a similar service that do not fit the characteristics of the IP protocol and the mechanisms you could put in place to address those limitations.*
 
 ---
-
+>I couldn't find something in the textbook that answers this question. So, this answer is provided by chatgpt and might not align with the curriculum
 ### Answer
 #### 1. **Specific Requirements of a Video Streaming Service**
 
