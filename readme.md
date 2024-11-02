@@ -1,6 +1,6 @@
 # Distributed Systems Exam Preparation
 
-This repository is a collection of answers to commonly asked questions from past Distributed Systems exams. The answers were primarily generated using GPT-4 and refined using references from the course textbook to ensure accuracy and alignment with the material taught by the professor.
+This repository is a collection of answers to commonly asked questions from past Distributed Systems exams. The answers were primarily generated using GPT-4o and refined using references from the course textbook to ensure accuracy and alignment with the material taught by the professor.
 
 ## Structure of the Repository
 
@@ -11,8 +11,8 @@ This repository is a collection of answers to commonly asked questions from past
 
 ## How Answers Were Generated
 
-1. **Initial Answers Using GPT-4**: Most of the answers were generated using GPT-4, known for its depth of understanding and ability to handle complex technical content.
-2. **Refinement Using Textbook References**: For questions where the initial GPT-4 answers seemed imprecise or deviated from the course material, I provided the relevant sections from **FINAL - DS notes col.pdf** as a reference. These sections were used to refine and correct the answers, ensuring they are accurate and in line with the professor's teachings.
+1. **Initial Answers Using GPT-4o**: Most of the answers were generated using GPT-4o, known for its depth of understanding and ability to handle complex technical content.
+2. **Refinement Using Textbook References**: For questions where the initial GPT-4o answers seemed imprecise or deviated from the course material, I provided the relevant sections from **FINAL - DS notes col.pdf** as a reference. These sections were used to refine and correct the answers, ensuring they are accurate and in line with the professor's teachings.
 
 ## How to Use This Repository
 
@@ -23,7 +23,7 @@ This repository is a collection of answers to commonly asked questions from past
 ## Acknowledgments
 
 - **Alireza**: For gathering the questions from past exams, which provided a foundation for this resource.
-- **ChatGPT & GPT-4**: For generating initial answers and assisting in the learning process.
+- **ChatGPT & GPT-4o**: For generating initial answers and assisting in the learning process.
 - **Professor's Material**: The **unofficial course notes** in **FINAL - DS notes col.pdf** were instrumental in ensuring the accuracy and relevancy of the provided answers.
 
 ## Disclaimer
