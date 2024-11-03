@@ -1,5 +1,5 @@
 **Question:** *Describe and compare various approaches to synchronize node clocks in a distributed system. Now suppose you have to correlate the readings of multiple distributed microphones to identify the source of a sound. Which clock synchronization method would you use?*
-
+---
 **Question 2:** *Now suppose you have to correlate multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with a precision of less than 1 km (seismic waves travel at a maximum speed of 10 km/s).*
 ---
 
