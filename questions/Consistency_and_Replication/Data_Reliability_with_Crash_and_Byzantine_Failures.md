@@ -1,6 +1,3 @@
-### File Title: Data_Reliability_with_Crash_and_Byzantine_Failures
-
----
 
 **Question:** *In a distributed system, a group of servers hold the same copy of an immutable data store. Clients contact one or more elements of the group to receive pieces of such data. How big must the group be to tolerate \( k \) crashes of servers? Describe the behavior to receive such data (clarify your assumptions). How would your answer change if the servers exhibited Byzantine behavior?*
 
