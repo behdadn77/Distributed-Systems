@@ -1,7 +1,5 @@
 **Question:** *Describe and compare various approaches to synchronize node clocks in a distributed system. Now suppose you have to correlate the readings of multiple distributed microphones to identify the source of a sound. Which clock synchronization method would you use?*
 ---
-**Question 2:** *Now suppose you have to correlate multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with a precision of less than 1 km (seismic waves travel at a maximum speed of 10 km/s).*
----
 
 ### Answer
 
@@ -55,7 +53,9 @@
 ### Conclusion
 Various approaches to clock synchronization offer different trade-offs in terms of accuracy, reliability, and applicability. For most distributed systems, NTP is the go-to solution. However, for specialized applications like sound source localization, the choice depends on the required precision and environmental constraints. For the microphone correlation task, NTP would be effective, but GPS could be considered for higher precision if available.
 
-
+---
+---
+**Question 2:** *Now suppose you have to correlate multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with a precision of less than 1 km (seismic waves travel at a maximum speed of 10 km/s).*
 ### Answer 2
 
 For the scenario of correlating multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with precision better than 1 kilometer (knowing that seismic waves travel at a maximum speed of 10 km/s), an extremely accurate and reliable clock synchronization method is required.
