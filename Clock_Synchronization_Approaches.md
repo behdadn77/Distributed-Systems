@@ -1,5 +1,5 @@
 **Question:** *Describe and compare various approaches to synchronize node clocks in a distributed system. Now suppose you have to correlate the readings of multiple distributed microphones to identify the source of a sound. Which clock synchronization method would you use?*
----
+
 
 ### Answer
 
