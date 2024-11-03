@@ -1,5 +1,6 @@
 **Question:** *Describe and compare various approaches to synchronize node clocks in a distributed system. Now suppose you have to correlate the readings of multiple distributed microphones to identify the source of a sound. Which clock synchronization method would you use?*
 
+**Question 2:** Now suppose you have to correlate multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with a precision of less than 1 km (seismic waves travel at a maximum speed of 10 km/s).
 ---
 
 ### Answer
@@ -53,3 +54,46 @@
 
 ### Conclusion
 Various approaches to clock synchronization offer different trade-offs in terms of accuracy, reliability, and applicability. For most distributed systems, NTP is the go-to solution. However, for specialized applications like sound source localization, the choice depends on the required precision and environmental constraints. For the microphone correlation task, NTP would be effective, but GPS could be considered for higher precision if available.
+
+
+### Answer 2
+
+For the scenario of correlating multiple readings from geographically distributed vibration sensors to determine the origin of an earthquake with precision better than 1 kilometer (knowing that seismic waves travel at a maximum speed of 10 km/s), an extremely accurate and reliable clock synchronization method is required.
+
+---
+
+### 1. **Synchronization Requirements for Earthquake Detection**
+- **Precision Needed**: To achieve a location precision of less than 1 kilometer, the timestamps of the readings from all sensors must be accurate to within 100 milliseconds (0.1 seconds). This is because, at a speed of 10 km/s, even a 0.1-second error translates to a 1 km discrepancy in locating the source.
+- **Challenges**: 
+  - The synchronization method must account for network delays and ensure that all vibration sensors have a highly accurate, synchronized global time.
+
+---
+
+### 2. **Recommended Clock Synchronization Method: GPS-Based Synchronization**
+- **Why GPS?**
+  - **High Precision**: GPS-based clock synchronization can provide sub-microsecond accuracy, far exceeding the precision requirement of 100 milliseconds. This level of precision ensures that seismic wave measurements can be accurately correlated across geographically distributed sensors.
+  - **Geographic Distribution**: GPS is ideal for synchronization over large distances, as it uses signals from satellites to synchronize clocks globally.
+
+- **How It Works**:
+  - Each sensor is equipped with a GPS receiver that continuously synchronizes the local clock with the GPS time. This ensures that all sensors have a common, highly accurate time reference, independent of network delays.
+  - **Fallback Mechanism**: If GPS signals are unavailable (e.g., in indoor or underground locations), a backup synchronization method such as Network Time Protocol (NTP) or Precision Time Protocol (PTP) can be used, although with reduced accuracy.
+
+---
+
+### 3. **Alternative Method: Network Time Protocol (NTP)**
+- **When to Use**: NTP can be a backup solution in environments where GPS is not feasible. However, NTP typically provides only millisecond-level accuracy, which might not be sufficient for the 100-millisecond requirement, especially over long distances or under variable network conditions.
+
+- **Limitations of NTP**:
+  - **Network Delay Variability**: NTP’s accuracy can be affected by network delays, making it less reliable for precision applications like earthquake detection.
+  - **Scalability**: For a large-scale sensor network, NTP may introduce inconsistencies if network paths have significant variability.
+
+---
+
+### 4. **Assumptions and Considerations**
+- **Reliable Communication**: The system must ensure that all sensor readings are transmitted and collected in a reliable and timely manner, with mechanisms in place to handle packet loss or delays.
+- **Data Aggregation**: A central server or distributed system would collect the timestamped sensor readings and use the precise timing information to triangulate the origin of the seismic waves.
+
+---
+
+### Conclusion
+For determining the origin of an earthquake with high precision, **GPS-based clock synchronization** is the most suitable method due to its ability to provide global time accuracy within microseconds. This ensures that all sensor readings can be accurately correlated, meeting the stringent timing requirements imposed by the high speed of seismic waves.
