@@ -28,7 +28,7 @@ The algorithm ensures that even if some processes crash during execution, the re
    - The algorithm runs for \( f + 1 \) rounds, where \( f \) is the maximum number of processes that can fail.
    - **In Each Round**:
      1. Each process sends its set \( W_i \) to all other processes.
-     2. Upon receiving sets from other processes, \( P_i \) adds the received values to its own set \( W_i \).
+     2. Upon receiving sets from other processes, \( P_i \) adds the received values to its own set \(z` W_i \).
 
 3. **Decision**:
    - After \( f + 1 \) rounds, each process makes a decision:
