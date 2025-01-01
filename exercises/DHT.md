@@ -157,3 +157,56 @@ Hence, only **two messages** are needed:
 1. A “find the key” (lookup) request from node 12 to node 0  
 2. A “here is your value” reply from node 0 back to node 12
 
+# Another Example
+
+---
+
+**Question**: Node 7 wants to retrieve the value of an object having key 10 in a circular DHT using the CHORD protocol. The ring has 4-bit identifiers and contains nodes 0, 7, and 12. Show the exchange of messages required to search for the value.
+
+**Answer**:
+
+### Setup
+We have the following nodes in the Chord ring: \( \{0, 7, 12\} \).  
+We are using a **4-bit identifier space** \((0 - 15)\).  
+
+The **responsible node** for \(k = 10\) is **Node 12**, because:
+- Node 12 is the first node greater than or equal to \(10\) in the circular ring.
+
+---
+
+### Steps in Lookup (With Best Finger)
+
+1. **Node 7 checks if key \(10\) is in \((7, \text{successor}(7)] = (7, 12]\)**:  
+   - Key \(10\) lies in \((7, 12]\), but **Node 7 doesn’t directly know about Node 12**.
+
+2. **Node 7 consults its finger table**:  
+   - Node 7’s finger table (as calculated earlier) is:
+
+     | Finger k | Start | Successor |
+     |----------|-------|-----------|
+     | k = 1    | 8     | 12        |
+     | k = 2    | 9     | 12        |
+     | k = 3    | 11    | 12        |
+     | k = 4    | 15    | 0         |
+
+   - The **best finger** is the largest \(k\) where \((\text{Start of finger} \leq k = 10)\):  
+     - Finger 1 points to \(8\), which is less than \(10\).  
+     - Finger 2 points to \(9\), which is less than \(10\).  
+     - Finger 3 (start = 11) exceeds \(10\), so **Finger 2** (pointing to \(9\)) is selected.
+
+3. **Node 7 forwards the request to the node at Finger 2 (Node 12)**:
+   - The request is forwarded to Node 12.  
+
+4. **Node 12 checks responsibility**:  
+   - Node 12 sees that it is responsible for \(k = 10\) (as it falls in \((7, 12]\)).  
+
+5. **Node 12 returns the value to Node 7**.
+
+---
+
+### Summary of Messages
+
+1. **Node 7 → Node 12**: Forward the lookup request for key \(10\) via the best finger (Finger 2).  
+2. **Node 12 → Node 7**: Respond with the value for key \(10\).  
+
+This example demonstrates how Chord routing uses the **best finger preceding the key** to forward the request closer to its destination.

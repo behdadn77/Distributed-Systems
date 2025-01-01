@@ -1,4 +1,3 @@
-# Distributed Systems Exam Preparation
 
 
 # Distributed Systems Exam Preparation
