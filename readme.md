@@ -1,3 +1,6 @@
+# Updated Readme File
+
+```markdown
 # Distributed Systems Exam Preparation
 
 This repository is a collection of answers to commonly asked questions from past Distributed Systems exams. The answers were primarily generated using GPT-4o and refined using references from the course textbook to ensure accuracy and alignment with the material taught by the professor.
@@ -13,6 +16,30 @@ This repository is a collection of answers to commonly asked questions from past
 
 1. **Initial Answers Using GPT-4o**: Most of the answers were generated using GPT-4o, known for its depth of understanding and ability to handle complex technical content.
 2. **Refinement Using Textbook References**: For questions where the initial GPT-4o answers seemed imprecise or deviated from the course material, I provided the relevant sections from **FINAL - DS notes col.pdf** as a reference. These sections were used to refine and correct the answers, ensuring they are accurate and in line with the professor's teachings.
+
+## Compiling the Repository into a PDF
+
+This repository contains Markdown files in various subdirectories (excluding `res`). You can compile these Markdown files, including LaTeX code, into a single PDF with a table of contents based on the directory and file names. The compiled PDF will include anchor links for easier navigation.
+
+### Steps to Compile:
+
+1. **Install Required Tools**:
+   - Install `pandoc`: `sudo apt install pandoc` (Linux) or use the package manager for your OS.
+   - Install LaTeX distribution (e.g., `TeX Live` or `MikTeX`): `sudo apt install texlive-full`.
+
+2. **Run the Compile Script**:
+   Execute the following command in the root directory of the repository:
+   ```bash
+   pandoc -s --toc --toc-depth=2 -o Distributed_Systems_Exam_Preparation.pdf \
+   $(find exercises notes pastExams questions -name '*.md' | sort)
+   ```
+   - `--toc`: Generates a table of contents.
+   - `--toc-depth=2`: Sets the depth of the table of contents to include up to two levels.
+   - `-o`: Specifies the output PDF file name.
+   - `find ...`: Locates all Markdown files in the specified directories.
+
+3. **Open the PDF**:
+   Once compiled, open `Distributed_Systems_Exam_Preparation.pdf` to review the document.
 
 ## How to Use This Repository
 
