@@ -1,6 +1,4 @@
-# Updated Readme File
 
-```markdown
 # Distributed Systems Exam Preparation
 
 This repository is a collection of answers to commonly asked questions from past Distributed Systems exams. The answers were primarily generated using GPT-4o and refined using references from the course textbook to ensure accuracy and alignment with the material taught by the professor.
